@@ -1,0 +1,3 @@
+Fundo - #f9ebfa
+Destaque - #5b3e8c
+Talvez azul - #009bdb
