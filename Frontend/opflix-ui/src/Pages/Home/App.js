@@ -1,14 +1,16 @@
 import React from 'react';
 
 // Components
-import NavBar from '../../Components/NavBar/NavBar';
-import Banner from '../../Components/Banner/Banner';
-import Plataformas from '../../Components/Plataformas/Plataformas';
-import Amostragem from '../../Components/Amostragem/Amostragem';
-import Planos from '../../Components/Planos/Planos';
+import NavBar from '../../Components/NavBars/HomeNavBar';
+import Banner from '../../Components/Banner';
+import Plataformas from './HomeSections/Plataformas';
+import Amostragem from './HomeSections/Amostragem';
+import Planos from './HomeSections/Planos';
+import Footer from '../../Components/Footer';
+
 // Imports Css
 import '../../assets/css/Home.css';
-import '../../assets/css/Header.css';
+import '../../assets/css/Header.css'
 
 function App() {
   return (
@@ -24,7 +26,7 @@ function App() {
         <Planos />
       </main>
       <footer>
-        {/* TODO: PAREI AQUI */}
+        <Footer />
       </footer>
     </div>
   );

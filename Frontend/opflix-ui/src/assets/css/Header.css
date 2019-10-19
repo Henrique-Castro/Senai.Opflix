@@ -3,7 +3,6 @@ nav {
 }
 .flex-box {
     display: flex;
-    justify-content: space-between;
 }
 .navItem{
     color: white;
