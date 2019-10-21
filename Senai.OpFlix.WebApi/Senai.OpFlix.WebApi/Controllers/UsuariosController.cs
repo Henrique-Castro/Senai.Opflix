@@ -57,7 +57,8 @@ namespace Senai.OpFlix.WebApi.Controllers
                 var claims = new[] {
                     new Claim(JwtRegisteredClaimNames.Email,UsuarioBuscado.Email),
                     new Claim(JwtRegisteredClaimNames.Jti, UsuarioBuscado.IdUsuario.ToString()),
-                    new Claim(ClaimTypes.Role, UsuarioBuscado.Tipo)
+                    new Claim(ClaimTypes.Role, UsuarioBuscado.Tipo),
+                    new Claim("Permissao" , UsuarioBuscado.Tipo)
                 };
                 var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("opflix-chave-autenticacao"));
 

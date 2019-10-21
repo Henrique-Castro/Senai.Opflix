@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logoClaro.png";
-
+import Axios from 'axios';
 //Components
 // import NavBar from '../Components/NavBars/DashboardNavBar';
 import Categorias from '../../Components/NavBars/NavBarLinks/Dashboard/Categorias';

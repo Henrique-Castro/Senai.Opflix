@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import { parseJwt } from "../services/auth";
 //img
 import Fundo from '../assets/images/fundoLogin.png';
 
 //component
 import NavBar from '../Components/NavBars/LoginNavBar';
+import { parse } from '@babel/parser';
+import { objectExpression } from '@babel/types';
 
 export default class Login extends Component {
     constructor() {
         super();
         this.state = {
             email: "",
-            senha: ""
+            senha: "",
+            error: ""
         }
     }
 
@@ -22,17 +26,35 @@ export default class Login extends Component {
         this.setState({ email: event.target.value });
     }
 
-    login = (event) => {
+    login = () => {
         // console.log('passou1');
-        event.preventDefault();
         // const apiUrl = ;
-        Axios.post('http://localhost:5000/api/Usuarios',{
-                email : this.state.email,
-                senha : this.state.senha
-            }
+        Axios.post('http://localhost:5000/api/Usuarios/Login', {
+            email: this.state.email,
+            senha: this.state.senha
+        }
         )
-        .then(response => console.log(response))
-        .catch(error => console.log(error))
+            .then(response => {
+                if (response.status === 200) {
+                    localStorage.setItem('usuario-opflix', response.data.token)
+                    if (parseJwt().Permissao === "ADMINISTRADOR") {
+                        this.props.history.push('/dashboard')
+                    }
+                    else{
+                        this.props.history.push('/usuario')
+                    }
+                }
+                else {
+                    this.props.history.push('/login')
+                    this.setState({ error: 'Email ou senha incorretos.' })
+                }
+            })
+            .catch(error => {
+                console.log(error)
+                this.setState({ error: 'Email ou senha incorretos.' })
+            });
+
+        // window.location.pathname.includes('/usuario');
     }
 
     render() {
@@ -45,6 +67,7 @@ export default class Login extends Component {
                         <input className="login-input" type="email" onChange={this.changeEmailState} />
                         <p>Senha</p>
                         <input className="login-input" type="password" onChange={this.changeSenhaState} />
+                        <p className="mensasgem-erro">{this.state.error}</p>
                         <button className="login-button" value="Entrar" onClick={this.login} >Entrar</button>
                     </div>
                 </section>

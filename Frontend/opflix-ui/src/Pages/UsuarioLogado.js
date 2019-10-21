@@ -31,11 +31,9 @@ export default class Cadastrar extends Component {
                             </tr>
                         </thead>
                         <tbody>
-
-
-                            <div className="table-buttons flex-box">
+                        {/* <div className="table-buttons flex-box">
                                 <button><img src={favIcon} alt="Botão para favoritar" /></button>
-                            </div>
+                            </div> */}
                         </tbody>
                     </table>
                 </section>
@@ -52,9 +50,9 @@ export default class Cadastrar extends Component {
                         <tbody>
 
 
-                            <div className="table-buttons flex-box">
+                            {/* <div className="table-buttons flex-box">
                                 <button><img src={favIcon} alt="Botão para favoritar" /></button>
-                            </div>
+                            </div> */}
                         </tbody>
                     </table>
                 </section>
