@@ -2,37 +2,38 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 export default class ListarCategorias extends Component {
 
-    constructor(){
+    constructor() {
         super();
         this.state = {
-            lista : []
+            lista: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.listarCategorias();
-    } 
-    
-    listarCategorias = () =>{
+    }
+
+    listarCategorias = () => {
         Axios.get('http://localhost:5000/api/Categorias')
-        .then(response => {
-            this.construirTabela(response.data);
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(response => {
+                this.setState({ lista: response.data });
+                // console.log(this.state.lista);
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
-    construirTabela = (data) =>{
-        data.forEach(info =>{
-            return(
-                <tr>
-                    <td>{info.idCategoria}</td>
-                    <td>{info.nome}</td>
-                    <td>{info.descricao}</td>
-                </tr>
-            );
-        })
-    }
+    // construirTabela = (data) => {
+    //     data.forEach(info => {
+    //         return (
+    //             <tr>
+    //                 <td>{info.idCategoria}</td>
+    //                 <td>{info.nome}</td>
+    //                 <td>{info.descricao}</td>
+    //             </tr>
+    //         );
+    //     })
+    // }
 
     render() {
         return (
@@ -48,7 +49,15 @@ export default class ListarCategorias extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.construirTabela}
+                        {this.state.lista.map(categoria =>{
+                            return(
+                                <tr>
+                                    <td>{categoria.idCategoria}</td>
+                                    <td>{categoria.nome}</td>
+                                    <td>{categoria.descricao}</td>
+                                </tr>
+                            );
+                        })}
 
                         {/* <div className="table-buttons flex-box">
                             <button>Deletar</button>

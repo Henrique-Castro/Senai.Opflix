@@ -10,7 +10,8 @@ import Footer from '../../Components/Footer';
 
 // Imports Css
 import '../../assets/css/Home.css';
-import '../../assets/css/Header.css'
+import '../../assets/css/style.css'
+import '../../assets/css/NavBar.css'
 
 function App() {
   return (

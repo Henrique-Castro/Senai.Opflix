@@ -55,5 +55,13 @@ namespace Senai.OpFlix.WebApi.Repositories
                 
             }
         }
+
+        public List<Usuarios> Listar()
+        {
+            using(OpflixContext ctx = new OpflixContext())
+            {
+                return ctx.Usuarios.ToList();
+            }
+        }
     }
 }

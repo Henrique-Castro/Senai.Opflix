@@ -82,5 +82,12 @@ namespace Senai.OpFlix.WebApi.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [Authorize(Roles ="ADMINISTRADOR")]
+        [HttpGet]
+        public IActionResult Listar()
+        {
+            return Ok(IUsuariosRepository.Listar());
+        }
     }
 }

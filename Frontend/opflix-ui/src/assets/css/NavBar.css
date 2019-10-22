@@ -1,0 +1,32 @@
+.logo {
+    height: 3em;
+  }
+  .navItem{
+    color: white;
+    font-size: 1.2em;
+    text-transform: uppercase;
+}
+nav {
+    background-color: rgba(0, 0, 0, 0.877);
+    height: 100%;
+    width: 100%;
+    padding: 0.5em;
+}
+.flex-box{
+  align-items: center;
+  justify-content: space-between;
+}
+h1{
+  display: none;
+}
+.navItem{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+}
+Link {
+  color: white;
+}
+Link:visited{
+  color : white;
+}

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { parseJwt } from "../services/auth";
+
+//css
+import '../assets/css/NavBar.css';
+import '../assets/css/Login.css';
 //img
 import Fundo from '../assets/images/fundoLogin.png';
 
