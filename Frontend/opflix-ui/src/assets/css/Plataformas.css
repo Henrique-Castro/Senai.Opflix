@@ -1,0 +1,39 @@
+#plataformas{
+    width: 100%;
+    background-color: #f9ebfa;
+    padding-top: 0;
+    font-family: 'Roboto' , sans-serif;
+    justify-content: space-around;
+    height: 35em;
+}
+#plataformas h2{
+    margin: 1em 0;
+    display: none;
+}
+.plataformas-image-box{
+    width: 30%;
+}
+.plataformas-image-box img{
+    height: 100%;
+    width: 100%;
+}
+.plataformas-text{
+    width: 30%;
+    height: 50%;
+    margin: auto 6em;
+    text-align: left;
+    font-size: 1.2em;
+}
+.plataformas-text p {
+    margin-top: 3em;
+}
+.imgPlataformas{
+    height: 100%;
+    width: 100%;
+}
+.plataforma-p-link{
+    margin: 1.5em 0;
+}
+.plataforma-link{
+    color: #5b3e8c;
+}

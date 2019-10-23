@@ -11,9 +11,8 @@ export default class Entrar extends Component {
 </style>
                 <Link className="nav-item nav-link" to="/login" style={
                     {
-                        color: 'white',
+                        color: '#9a75d9',
                         textDecoration: 'none',
-                        textTransform: 'uppercase',
                         fontFamily: 'Roboto',
                         fontSize: '1.4em'
                     }}>Entrar</Link>

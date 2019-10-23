@@ -1,3 +1,4 @@
-Fundo - #f9ebfa
-Destaque - #5b3e8c
+Fundo claro - #f9ebfa
+Roxo claro - 9a75d9
+Roxo escuro - 5b3e8c
 Talvez azul - #009bdb
