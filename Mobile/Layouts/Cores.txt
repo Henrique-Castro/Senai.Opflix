@@ -1,4 +1,7 @@
 Fundo claro - #f9ebfa
 Roxo claro - 9a75d9
 Roxo escuro - 5b3e8c
+Fundo Preto - #2e2e2e
 Talvez azul - #009bdb
+inactive icons - #d9d2e4
+active icons - #ffffff
