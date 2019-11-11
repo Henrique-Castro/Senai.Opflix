@@ -10,6 +10,7 @@ import {
     StyleSheet
 } from 'react-native';
 import OpflixLogo from '../assets/img/logoEscuro.png';
+import { whileStatement } from '@babel/types';
 
 
 export default class Login extends Component {
@@ -20,8 +21,8 @@ export default class Login extends Component {
     constructor() {
         super();
         this.state = {
-            userEmail: "",
-            userPassword: ""
+            userEmail: "hcdsfigueira@gmail.com",
+            userPassword: "123456"
         }
     }
 
@@ -29,7 +30,7 @@ export default class Login extends Component {
         if(token != null){
             try{
                 await AsyncStorage.setItem('@opflix:token', token);
-                this.props.navigation.Navigate('MainNavigation');
+                this.props.navigation.navigate('MainNavigation');
             }
             catch(error){
                 console.warn(error);
@@ -38,7 +39,7 @@ export default class Login extends Component {
     }
 
     _signIn = async () => {
-        fetch('http://localhost:5000/api/Usuarios/Login', {
+        fetch('http://192.168.4.224:5000/api/Usuarios/Login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -59,17 +60,19 @@ export default class Login extends Component {
             <View style={styles.pageBackground}>
                 <Image style={styles.opflixLogo} source={OpflixLogo} />
                 <TextInput
+                    style={styles.inputText}
                     placeholder="Email"
                     onChangeText={userEmail => this.setState({ userEmail })}
                     value={this.state.userEmail}
                 />
                 <TextInput
+                    style={styles.inputText}
                     placeholder="Senha"
                     onChangeText={userPassword => this.setState({ userPassword })}
                     value={this.state.userPassword}
                 />
-                <TouchableOpacity onPress={this._signIn}>
-                    <Text>Entrar</Text>
+                <TouchableOpacity style={styles.loginButton} onPress={this._signIn}>
+                    <Text style={styles.textEntrar}>Entrar</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -84,7 +87,27 @@ const styles = StyleSheet.create({
     opflixLogo: {
         height: 80,
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        marginBottom:120,
+        borderBottomWidth:0.5,
+        borderBottomColor:'#ffffff'
     },
+    inputText:{
+        alignSelf:'center',
+        backgroundColor:'white',
+        width:'90%',
+        marginBottom:40,
+        paddingLeft:10
+    },
+    loginButton:{
+        alignSelf:'center',
+        padding:5,
+        borderRadius:3,
+        backgroundColor:'#5b3e8c',
+    },
+    textEntrar:{
+        fontSize:25,
+        color:'white',
+    }
 
 });

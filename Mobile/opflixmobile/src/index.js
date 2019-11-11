@@ -7,7 +7,6 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import HomeScreen from './pages/home';
 import LoginScreen from './pages/login';
 
-
 const AuthStack = createStackNavigator({
     Login : {screen : LoginScreen}
 });
