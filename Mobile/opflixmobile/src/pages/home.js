@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, AsyncStorage } from 'react-native';
+import { View, Text, StyleSheet, AsyncStorage, Image } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 
+import HeartIcon from '../assets/img/icones/favourite_heart.png';
 export default class Home extends Component {
 
     constructor(){
@@ -41,16 +42,20 @@ export default class Home extends Component {
                     <Text style={styles.sideText}>Filtrar por</Text>
                 </View>
                 <FlatList
-                    ListHeaderComponent={<View style={styles.tableHead}>
-                        <Text style={styles.tableHeadText}>Título</Text>
-                        <Text style={styles.tableHeadText}>Categoria</Text>
-                        </View>}
+                    ListHeaderComponent={
+                        <View style={styles.tableHead}>
+                            <Text style={styles.tableHeadText}>Título</Text>
+                            <Text style={styles.tableHeadText}>Categoria</Text>
+                        </View>
+                        }
                     data={this.state.list}
                     keyExtractor = {item => item.idLancamento.toString()}
                     renderItem={({item}) =>(
-                        <ScrollView>
-                            <Text>{item.Titulo}</Text>
-                        </ScrollView>
+                        <View style={styles.tableContent}>
+                            <Text style={styles.tableTextContent}>{item.Titulo}</Text>
+                            <Text style={styles.tableTextContent}>{item.Categoria}</Text>
+                            <Image source={HeartIcon} value={item.idLancamento}/>
+                        </View>
                     )}
                 /> 
             </View>
@@ -89,6 +94,17 @@ const styles = StyleSheet.create({
     tableHeadText:{
         color:'white',
         fontSize:20,
+        marginLeft:-100
+    },
+    tableContent:{
+        flexDirection:'row',
+        justifyContent:'space-around',
+        borderBottomColor:'rgba(255, 255, 255, 0.5)',
+        borderBottomWidth:2,
+    },
+    tableTextContent:{
+        color:'white',
+        fontSize:15,
         marginLeft:-100
     }
 })
