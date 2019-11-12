@@ -89,8 +89,6 @@ const styles = StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto',
         marginBottom:120,
-        borderBottomWidth:0.5,
-        borderBottomColor:'#ffffff'
     },
     inputText:{
         alignSelf:'center',
