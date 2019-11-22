@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, AsyncStorage, Image } from 'react-native';
+import { View, Text, StyleSheet, AsyncStorage, Image, TouchableHighlight } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import FlipToggle from 'react-native-flip-toggle-button'
 
-import HeartIcon from '../assets/img/icones/favourite_heart.png';
+import HeartEmptyIcon from '../assets/img/icones/heartEmptyIcon.png';
+import HeartFilledIcon from '../assets/img/icones/heartFilledIcon.png';
 import Axios from 'axios';
 export default class Home extends Component {
 
@@ -11,23 +12,29 @@ export default class Home extends Component {
         super();
         this.state = {
             list: [],
+            imgStateList:[
+                idLancamento="",
+                state=false
+            ],
             isActive: false,
             timer: null,
-            oldCounter:0,
-            counter:0
+            oldCounter: 0,
+            counter: 0
         }
     }
 
     componentDidMount() {
         this._getSnapshot();
         let timer = setInterval(this._getSnapshot, 1000);
-        this.setState({ timer:timer });
+        this.setState({ timer: timer });
     }
-    componentWillUnmount() {
-        this.clearInterval(this.state.timer);
-    }
-     
-    
+
+    // _updateImgStates = async (list) =>{
+    //     list.forEach(element => {
+    //         this.setState({imgStateList:imgStateList+{idLancamento=element.idLancamento,}})
+    //     });
+    // }
+
 
     _getSnapshot = async () => {
         switch (this.state.isActive) {
@@ -55,6 +62,7 @@ export default class Home extends Component {
                     })
                     // .then(data => console.warn(data))
                     .then(response => this.setState({ list: response.data }))
+                    .then()
                     .catch(error => console.warn(error))
                 break;
             default:
@@ -73,7 +81,9 @@ export default class Home extends Component {
         }
 
     }
-
+    _onPressFavoritar = async(id) =>{
+        
+    }
     render() {
         return (
             <View style={styles.pageBackgroud}>
@@ -95,7 +105,7 @@ export default class Home extends Component {
                         offLabel={'Data'}
                         labelStyle={{ color: 'white' }}
                         onToggle={() => {
-                            this.setState({ isActive: !this.state.isActive , counter:this.state.counter+1 });
+                            this.setState({ isActive: !this.state.isActive, counter: this.state.counter + 1 });
                         }}
                         onToggleLongPress={() => console.log('toggle long pressed!')}
                     />
@@ -111,9 +121,16 @@ export default class Home extends Component {
                     keyExtractor={item => item.idLancamento.toString()}
                     renderItem={({ item }) => (
                         <View style={styles.tableContent}>
-                            <Text style={styles.tableTextContent}>{item.titulo}</Text>
-                            <Text style={styles.tableTextContent}>{item.categoria}</Text>
-                            {/* <Image style={styles.tableImageContent} source={HeartIcon} value={item.idLancamento}/> */}
+                            <Text style={styles.tableTituloContent}>{item.titulo}</Text>
+                            <Text style={styles.tableCategoriaContent}>{item.categoria}</Text>
+                            <TouchableHighlight onPress={() => this._onPressFavoritar(item.idLancamento)}>
+                                <Image
+                                    style={styles.tableImageContent}
+                                    source={HeartEmptyIcon}
+                                    value={item.idLancamento} 
+                                />
+                            </TouchableHighlight>
+
                         </View>
                     )}
                 />
@@ -166,13 +183,18 @@ const styles = StyleSheet.create({
         borderBottomColor: 'rgba(255, 255, 255, 0.5)',
         borderBottomWidth: 2,
     },
-    tableTextContent: {
+    tableTituloContent: {
         color: 'white',
         fontSize: 30,
-        width: '50%',
+        width: '40%',
         height: 50,
         flexWrap: 'nowrap',
-        paddingLeft: 12,
+    },
+    tableCategoriaContent: {
+        color: 'white',
+        fontSize: 30,
+        height: 50,
+        flexWrap: 'nowrap',
     },
     tableImageContent: {
         height: 50,
