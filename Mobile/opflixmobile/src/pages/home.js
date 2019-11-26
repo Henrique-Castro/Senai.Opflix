@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, AsyncStorage, Image, TouchableHighlight } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
-import FlipToggle from 'react-native-flip-toggle-button'
+import FlipToggle from 'react-native-flip-toggle-button';
 
 import HeartEmptyIcon from '../assets/img/icones/heartEmptyIcon.png';
 import HeartFilledIcon from '../assets/img/icones/heartFilledIcon.png';
