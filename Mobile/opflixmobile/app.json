@@ -1,4 +1,9 @@
 {
   "name": "opflixmobile",
-  "displayName": "opflixmobile"
+  "displayName": "opflixmobile",
+  "splash": {
+    "image": "./src/assets/img/logoEscuro.png",
+    "backgroundColor": "#2e2e2e",
+    "resizeMode": "contain"
+  }
 }

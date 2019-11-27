@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, AsyncStorage, Image, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, AsyncStorage, Image, TouchableHighlight, Button, TouchableOpacity } from 'react-native';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import FlipToggle from 'react-native-flip-toggle-button';
 
@@ -8,13 +8,17 @@ import HeartFilledIcon from '../assets/img/icones/heartFilledIcon.png';
 import Axios from 'axios';
 export default class Home extends Component {
 
+    static navigationOptions = {
+        header: null,
+    };
+
     constructor() {
         super();
         this.state = {
             list: [],
-            imgStateList:[
-                idLancamento="",
-                state=false
+            imgStateList: [
+                idLancamento = "",
+                state = false
             ],
             isActive: false,
             timer: null,
@@ -81,13 +85,25 @@ export default class Home extends Component {
         }
 
     }
-    _onPressFavoritar = async(id) =>{
-        
+    logout = async () => {
+
+        await AsyncStorage.removeItem("@opflix:token");
+        this.props.navigation.navigate('AuthStack');
+
+    }
+    _onPressFavoritar = async (id) => {
+
     }
     render() {
         return (
             <View style={styles.pageBackgroud}>
+                <TouchableOpacity
+                    onPress={this.logout}>
+                    <Text style={styles.logoutButton}>Sair</Text>
+                </TouchableOpacity>
+
                 <View style={styles.flexContainer}>
+
                     <Text style={styles.h2}>Lançamentos</Text>
                     <Text style={styles.sideText}>Filtrar por</Text>
                     <FlipToggle
@@ -127,7 +143,7 @@ export default class Home extends Component {
                                 <Image
                                     style={styles.tableImageContent}
                                     source={HeartEmptyIcon}
-                                    value={item.idLancamento} 
+                                    value={item.idLancamento}
                                 />
                             </TouchableHighlight>
 
@@ -153,6 +169,14 @@ const styles = StyleSheet.create({
     },
     flexContainer: {
         flexDirection: 'row'
+    },
+    logoutButton: {
+        color: 'white',
+        width: '100%',
+        paddingLeft: 10,
+        paddingTop: 10,
+        paddingBottom: 10,
+        opacity: 1
     },
     sideText: {
         alignSelf: 'auto',

@@ -17,8 +17,8 @@ const MainNavigation = createBottomTabNavigator({
     {
         initialRouteName: 'Home',
         tabBarOptions: {
-            showLabel: true,
-            showIcon: true,
+            showLabel: false,
+            showIcon: false,
             inactiveBackgroundColor: '#d9d2e4',
             activeBackgroundColor: '#ffffff',
             style: {
@@ -28,6 +28,9 @@ const MainNavigation = createBottomTabNavigator({
         }
     }
 );
+MainNavigation.navigationOptions = {
+  header:null
+}
 
 export default createAppContainer(
     createSwitchNavigator(

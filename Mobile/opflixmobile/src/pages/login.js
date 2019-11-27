@@ -7,7 +7,8 @@ import {
     AsyncStorage,
     Image,
     Button,
-    StyleSheet
+    StyleSheet,
+    CheckBox
 } from 'react-native';
 import OpflixLogo from '../assets/img/logoEscuro.png';
 import { whileStatement } from '@babel/types';
@@ -17,26 +18,40 @@ export default class Login extends Component {
     static navigationOptions = {
         header: null,
     };
-
+    
     constructor() {
         super();
         this.state = {
             userEmail: "hcdsfigueira@gmail.com",
-            userPassword: "123456"
+            userPassword: "123456",
+            rememberMe: false
         }
     }
 
-    _redirectToHome = async (token) =>{
-        if(token != null){
-            try{
-                await AsyncStorage.setItem('@opflix:token', token);
+    async componentDidMount() {
+        console.disableYellowBox = true;
+        const storageRemember = JSON.parse(await AsyncStorage.getItem("@opflix:remember"));
+        const storageToken = await AsyncStorage.getItem("@opflix:token");
+        
+        if(storageRemember == true && storageToken != null)
+        {
+            this.props.navigation.navigate('MainNavigation');
+        }
+    }
+
+
+    _redirectToHome = async (token) => {
+        if (token != null) {
+            try {
+                await AsyncStorage.setItem("@opflix:token", token);
                 this.props.navigation.navigate('MainNavigation');
             }
-            catch(error){
-                console.warn(error);
+            catch (error) {
+                console.log(error);
             }
         }
     }
+
 
     _signIn = async () => {
         fetch('http://192.168.4.224:5000/api/Usuarios/Login', {
@@ -50,9 +65,21 @@ export default class Login extends Component {
                 senha: this.state.userPassword
             })
         })
-        .then(response => response.json())
-        .then(data => this._redirectToHome(data.token))
-        .catch(error => console.warn(error))
+            .then(response => response.json())
+            .then(data => this._redirectToHome(data.token))
+            .catch(error => console.log(error))
+    }
+
+    toggleRememberMe = async () => {
+        try {
+            this.setState({rememberMe:!this.state.rememberMe});
+
+            
+            await AsyncStorage.setItem("@opflix:remember", JSON.stringify(!this.state.rememberMe));
+        }
+        catch(error){
+            console.log(error);
+        }
     }
 
     render() {
@@ -68,17 +95,23 @@ export default class Login extends Component {
                 <TextInput
                     style={styles.inputText}
                     placeholder="Senha"
+                    secureTextEntry={true}
                     onChangeText={userPassword => this.setState({ userPassword })}
                     value={this.state.userPassword}
                 />
+                <CheckBox
+                    value={this.state.rememberMe}
+                    onValueChange={(value) => this.toggleRememberMe(value)}
+                />
+                <Text>Remember Me</Text>
                 <TouchableOpacity style={styles.loginButton} onPress={this._signIn}>
                     <Text style={styles.textEntrar}>Entrar</Text>
                 </TouchableOpacity>
             </View>
         );
     }
-}
 
+}
 const styles = StyleSheet.create({
     pageBackground: {
         backgroundColor: '#2e2e2e',
@@ -86,26 +119,27 @@ const styles = StyleSheet.create({
     },
     opflixLogo: {
         height: 80,
+        marginTop: 20,
         marginLeft: 'auto',
         marginRight: 'auto',
-        marginBottom:120,
+        marginBottom: 120,
     },
-    inputText:{
-        alignSelf:'center',
-        backgroundColor:'white',
-        width:'90%',
-        marginBottom:40,
-        paddingLeft:10
+    inputText: {
+        alignSelf: 'center',
+        backgroundColor: 'white',
+        width: '90%',
+        marginBottom: 40,
+        paddingLeft: 10
     },
-    loginButton:{
-        alignSelf:'center',
-        padding:5,
-        borderRadius:3,
-        backgroundColor:'#5b3e8c',
+    loginButton: {
+        alignSelf: 'center',
+        padding: 5,
+        borderRadius: 3,
+        backgroundColor: '#5b3e8c',
     },
-    textEntrar:{
-        fontSize:25,
-        color:'white',
+    textEntrar: {
+        fontSize: 25,
+        color: 'white',
     }
 
 });
