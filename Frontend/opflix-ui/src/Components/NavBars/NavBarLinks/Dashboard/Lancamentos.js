@@ -8,14 +8,17 @@ export default class Lancamentos extends Component {
         this.state = {
             showLancamentosMenu: false,
         }
-        this.showLancamentosMenu = this.showLancamentosMenu.bind(this);
+        this.showMenuItems = this.showMenuItems.bind(this);
     }
-    showLancamentosMenu = (event) => {
+    showMenuItems = (event) => {
         event.preventDefault();
         
         this.setState({
-            showLancamentosMenu: !this.state.showLancamentosMenu,
+            showItemMenu: !this.state.showItemMenu,
         });
+        setInterval(this.setState({
+            showItemMenu: !this.state.showItemMenu,
+        }), 5000);
     }
     // TODO: LÓGICA DAS AÇÕES DOS BOTÕES. APARECER A TABELA NO LISTAR, OS INPUTS NO CADASTRAR E ETC
 
@@ -23,11 +26,11 @@ export default class Lancamentos extends Component {
         return (
             <div>
                 
-                <button onClick={this.showLancamentosMenu}>
+                <button className="dash-nav-button" onMouseOver={this.showMenuItems}>
                     Lancamentos
                 </button>
                     {
-                        this.state.showLancamentosMenu ? (
+                        this.state.showItemMenu ? (
                             //CASE TRUE
                             <div className="drop-menu">
                                 <button>Cadastrar</button>

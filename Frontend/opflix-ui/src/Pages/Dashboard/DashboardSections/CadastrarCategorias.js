@@ -47,7 +47,7 @@ export default class CadastrarCategorias extends Component {
                 </div>
                 <div className="sinopse-input-container">
                     <p>Descrição</p>
-                    <div className="sinopse-input-content flex-box">
+                    <div className="sinopse-input-content">
                         <input type="text" onChange={this.changeDescricaoCategoriaState}/>
                         <div className="buttons-container">
                             <button>Limpar</button>

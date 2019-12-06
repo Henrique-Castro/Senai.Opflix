@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 export default class BuscarLancamentos extends Component{
     render(){
         return(
-            <section id="buscarLancamentos" className="flex-box">
+            <section id="buscarLancamentos" className="search-box">
                 <input type='text' placeholder="Id ou nome do lancamento"/>
-                <button>Buscar</button>
+                <button className="search-button">Buscar</button>
             </section>
         );
     }

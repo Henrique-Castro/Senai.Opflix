@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { delay } from "q";
 
 export default class Usuarios extends Component {
 
@@ -6,16 +7,19 @@ export default class Usuarios extends Component {
         super();
 
         this.state = {
-            showUsuariosMenu: false,
+            showItemMenu: false,
         }
-        this.showUsuariosMenu = this.showUsuariosMenu.bind(this);
+        this.showMenuItems = this.showMenuItems.bind(this);
     }
-    showUsuariosMenu = (event) => {
+    showMenuItems = (event) => {
         event.preventDefault();
         
         this.setState({
-            showUsuariosMenu: !this.state.showUsuariosMenu,
+            showItemMenu: !this.state.showItemMenu,
         });
+        setInterval(this.setState({
+            showItemMenu: !this.state.showItemMenu,
+        }), 5000);
     }
     // TODO: LÓGICA DAS AÇÕES DOS BOTÕES. APARECER A TABELA NO LISTAR, OS INPUTS NO CADASTRAR E ETC
 
@@ -23,11 +27,11 @@ export default class Usuarios extends Component {
         return (
             <div>
                 
-                <button onClick={this.showUsuariosMenu}>
+                <button className="dash-nav-button" onMouseOver={this.showMenuItems}>
                     Usuários
                 </button>
                     {
-                        this.state.showUsuariosMenu ? (
+                        this.state.showItemMenu ? (
                             //CASE TRUE
                             <div className="drop-menu">
                                 <button>Cadastrar</button>

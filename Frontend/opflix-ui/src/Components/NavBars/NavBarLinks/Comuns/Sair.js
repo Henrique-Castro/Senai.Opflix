@@ -5,7 +5,7 @@ export default class Sair extends Component {
 
     render() {
         return (
-            <Link className="nav-item nav-link" to="/">Sair</Link>
+            <Link className="logout-nav-button" to="/">Sair</Link>
         );
     }
 }

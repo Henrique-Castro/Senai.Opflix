@@ -6,16 +6,19 @@ export default class Categorias extends Component {
         super();
 
         this.state = {
-            showCategoriasMenu: false,
+            showItemMenu: false,
         }
-        this.showCategoriasMenu = this.showCategoriasMenu.bind(this);
+        this.showMenuItems = this.showMenuItems.bind(this);
     }
-    showCategoriasMenu = (event) => {
+    showMenuItems = (event) => {
         event.preventDefault();
         
         this.setState({
-            showCategoriasMenu: !this.state.showCategoriasMenu,
+            showItemMenu: !this.state.showItemMenu,
         });
+        setInterval(this.setState({
+            showItemMenu: !this.state.showItemMenu,
+        }), 5000);
     }
     // TODO: LÓGICA DAS AÇÕES DOS BOTÕES. APARECER A TABELA NO LISTAR, OS INPUTS NO CADASTRAR E ETC
 
@@ -23,11 +26,11 @@ export default class Categorias extends Component {
         return (
             <div>
                 
-                <button onClick={this.showCategoriasMenu}>
+                <button className="dash-nav-button" onMouseOver={this.showMenuItems}>
                     Categorias
                 </button>
                     {
-                        this.state.showCategoriasMenu ? (
+                        this.state.showItemMenu ? (
                             //CASE TRUE
                             <div className="drop-menu">
                                 <button>Cadastrar</button>

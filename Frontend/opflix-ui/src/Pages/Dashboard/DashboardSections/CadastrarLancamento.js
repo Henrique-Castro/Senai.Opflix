@@ -16,13 +16,13 @@ export default class CadastrarLancamento extends Component {
             plataforma: "",
             visivel: "",
             status: "",
-            listaCategorias : [],
-            listaPlataformas : [],
-            listaFormatos : []
+            listaCategorias: [],
+            listaPlataformas: [],
+            listaFormatos: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.listarCategorias();
         this.listarPlataformas();
         this.listarFormatos();
@@ -39,7 +39,7 @@ export default class CadastrarLancamento extends Component {
             })
     }
 
-    listarFormatos = () =>{
+    listarFormatos = () => {
         Axios.get('http://localhost:5000/api/Formatos')
             .then(response => {
                 this.setState({ listaFormatos: response.data });
@@ -50,7 +50,7 @@ export default class CadastrarLancamento extends Component {
             })
     }
 
-    listarPlataformas = () =>{
+    listarPlataformas = () => {
         Axios.get('http://localhost:5000/api/Plataformas')
             .then(response => {
                 this.setState({ listaPlataformas: response.data });
@@ -96,41 +96,41 @@ export default class CadastrarLancamento extends Component {
     }
     cadastrar = (event) => {
         fetch("http://localhost:5000/api/Lancamentos", {
-                method: "POST",
-                body: JSON.stringify({
-                    titulo: this.state.titulo,
-                    sinopse: this.state.sinopse,
-                    categoria: this.state.categoria,
-                    duracao: this.state.duracao,
-                    formato: this.state.formato,
-                    estreia: this.state.estreia,
-                    qtdEpisodios: this.state.qtdEpisodios,
-                    plataforma: this.state.plataforma,
-                    visivel: this.state.visivel
-                }),
-                headers : {
-                    "Content-Type" : "application/json",
-                    "Authorization" : "Bearer " + localStorage.getItem("usuario-opflix")
-                }
+            method: "POST",
+            body: JSON.stringify({
+                titulo: this.state.titulo,
+                sinopse: this.state.sinopse,
+                categoria: this.state.categoria,
+                duracao: this.state.duracao,
+                formato: this.state.formato,
+                estreia: this.state.estreia,
+                qtdEpisodios: this.state.qtdEpisodios,
+                plataforma: this.state.plataforma,
+                visivel: this.state.visivel
+            }),
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + localStorage.getItem("usuario-opflix")
+            }
         })
-        .then(response => {
-            console.log(response)
-        })
+            .then(response => {
+                console.log(response)
+            })
     }
 
     render() {
         return (
             <section id="cadastrarLancamento">
                 <h2>Criar lançamento</h2>
-                <div className="all-input-container flex-box">
+                <div className="all-input-container">
                     <div className="half-input-container">
                         <p>Título</p>
                         <input type="text" onChange={this.changeTituloState} />
                         <p>Categoria</p>
                         <select>
                             {this.state.listaCategorias.map(categoria => {
-                                return(
-                                <option value={categoria.idCategoria} onClick={this.changeCategoriaState}>{categoria.nome}</option>
+                                return (
+                                    <option value={categoria.idCategoria} onClick={this.changeCategoriaState}>{categoria.nome}</option>
                                 );
                             })}
                         </select>
@@ -138,27 +138,27 @@ export default class CadastrarLancamento extends Component {
                     <div className="half-input-container">
                         <p>Estréia</p>
                         <input type="date" onChange={this.changeEstreiaState} />
-                        <p>Duração</p>
+                        <p>Duração (minutos)</p>
                         <input type="number" onChange={this.changeDuracaoState} />
                     </div>
 
                 </div>
 
-                <div className="all-input-container flex-box">
+                <div className="all-input-container">
                     <div className="half-input-container">
                         <p>Plataforma</p>
                         <select>
                             {this.state.listaPlataformas.map(plataforma => {
-                                return(
-                                <option value={plataforma.idPlataforma} onClick={this.changePlataformaState}>{plataforma.nome}</option>
+                                return (
+                                    <option value={plataforma.idPlataforma} onClick={this.changePlataformaState}>{plataforma.nome}</option>
                                 );
                             })}
                         </select>
                         <p>Formato</p>
                         <select>
                             {this.state.listaFormatos.map(formato => {
-                                return(
-                                <option value={formato.idFormatoLancamento} onClick={this.changeFormatoState}>{formato.nome}</option>
+                                return (
+                                    <option value={formato.idFormatoLancamento} onClick={this.changeFormatoState}>{formato.nome}</option>
                                 );
                             })}
                         </select>
@@ -168,13 +168,23 @@ export default class CadastrarLancamento extends Component {
                         <input type="number" onChange={this.changeQtdEpisodiosState} />
                     </div>
                 </div>
-                <p>Este lançamento estará visível?</p>
-                <input type="radio" name="visivel" value="Sim" />
-                <input type="radio" name="visivel" value="Não" />
+                <div className="end-container">
+                    <p>Este lançamento estará visível?</p>
+                    <div className="radio-button-flex">
+                        <div className="radio-button-content">
+                            <input type="radio" name="visivel" value="Sim" />
+                            <input type="radio" name="visivel" value="Não" />
+                        </div>
+                        <div className="radio-button-content">
+                            <p>Sim</p>
+                            <p>Não</p>
+                        </div>
+                    </div>
+                </div>
                 <div className="sinopse-input-container">
                     <p>Sinopse</p>
-                    <div className="sinopse-input-content flex-box">
-                        <input type="text" onChange={this.changeSinopseState} />
+                    <div className="sinopse-input-content">
+                        <textarea type="text" onChange={this.changeSinopseState} />
                         <div className="buttons-container">
                             <button>Limpar</button>
                             <button>Criar</button>

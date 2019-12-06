@@ -33,7 +33,7 @@ export default class Login extends Component {
     login = () => {
         // console.log('passou1');
         // const apiUrl = ;
-        Axios.post('http://localhost:5000/api/Usuarios/Login', {
+        Axios.post('http://192.168.4.224:5000/api/Usuarios/Login', {
             email: this.state.email,
             senha: this.state.senha
         }
@@ -66,13 +66,15 @@ export default class Login extends Component {
             <div>
                 <NavBar />
                 <section id="login" className="flex-box">
-                    <div>
-                        <p>Email</p>
-                        <input className="login-input" type="email" onChange={this.changeEmailState} />
-                        <p>Senha</p>
-                        <input className="login-input" type="password" onChange={this.changeSenhaState} />
-                        <p className="mensasgem-erro">{this.state.error}</p>
+                    <div id="login-container">
+                        
+                    <div id="login-content">
+                    <h2 className="login-h2">Login</h2>
+                        <p className="error-message">{this.state.error}</p>
+                        <input className="login-input" type="email" onChange={this.changeEmailState} placeholder="Email"/>
+                        <input className="login-input" type="password" onChange={this.changeSenhaState} placeholder="Senha" />
                         <button className="login-button" value="Entrar" onClick={this.login} >Entrar</button>
+                    </div>
                     </div>
                 </section>
             </div>
