@@ -19,8 +19,7 @@ export default class CadastrarCategorias extends Component {
     }
 
     cadastrarCategoria = (event) =>{
-        event.preventDefault();
-        fetch('http://localhost:5000/api/Categorias',{
+        fetch('http://192.168.4.224:5000/api/Categorias',{
             method : "POST",
             body : JSON.stringify({
                 nome : this.state.nomeCategoria,
@@ -33,6 +32,7 @@ export default class CadastrarCategorias extends Component {
         })
         // .then(response => listarCategorias())
         .catch(error => console.log(error))
+        window.location.reload();
     }
 
     render() {
@@ -48,7 +48,7 @@ export default class CadastrarCategorias extends Component {
                 <div className="sinopse-input-container">
                     <p>Descrição</p>
                     <div className="sinopse-input-content">
-                        <input type="text" onChange={this.changeDescricaoCategoriaState}/>
+                        <textarea type="text" onChange={this.changeDescricaoCategoriaState}/>
                         <div className="buttons-container">
                             <button>Limpar</button>
                             <button onClick ={this.cadastrarCategoria}>Criar</button>

@@ -23,13 +23,15 @@ export default class CadastrarLancamento extends Component {
     }
 
     componentDidMount() {
+        Axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('usuario-opflix'); // for all requests
         this.listarCategorias();
+        console.log(this.state.listaCategorias);
         this.listarPlataformas();
         this.listarFormatos();
     }
 
     listarCategorias = () => {
-        Axios.get('http://localhost:5000/api/Categorias')
+        Axios.get('http://192.168.4.224:5000/api/Categorias')
             .then(response => {
                 this.setState({ listaCategorias: response.data });
                 // console.log(this.state.lista);
@@ -40,7 +42,7 @@ export default class CadastrarLancamento extends Component {
     }
 
     listarFormatos = () => {
-        Axios.get('http://localhost:5000/api/Formatos')
+        Axios.get('http://192.168.4.224:5000/api/Formatos')
             .then(response => {
                 this.setState({ listaFormatos: response.data });
                 // console.log(this.state.lista);
@@ -51,7 +53,7 @@ export default class CadastrarLancamento extends Component {
     }
 
     listarPlataformas = () => {
-        Axios.get('http://localhost:5000/api/Plataformas')
+        Axios.get('http://192.168.4.224:5000/api/Plataformas')
             .then(response => {
                 this.setState({ listaPlataformas: response.data });
                 // console.log(this.state.lista);
@@ -60,7 +62,6 @@ export default class CadastrarLancamento extends Component {
                 console.log(error)
             })
     }
-
     changeTituloState = (event) => {
         this.setState({ titulo: event.target.value });
     }
@@ -94,8 +95,8 @@ export default class CadastrarLancamento extends Component {
             this.setState({ visivel: 0 })
         }
     }
-    cadastrar = (event) => {
-        fetch("http://localhost:5000/api/Lancamentos", {
+    cadastrar = async (event) => {
+        await fetch("http://192.168.4.224:5000/api/Lancamentos", {
             method: "POST",
             body: JSON.stringify({
                 titulo: this.state.titulo,
@@ -116,6 +117,8 @@ export default class CadastrarLancamento extends Component {
             .then(response => {
                 console.log(response)
             })
+            .catch(erro => console.log(erro))
+            window.location.reload();
     }
 
     render() {
@@ -187,7 +190,7 @@ export default class CadastrarLancamento extends Component {
                         <textarea type="text" onChange={this.changeSinopseState} />
                         <div className="buttons-container">
                             <button>Limpar</button>
-                            <button>Criar</button>
+                            <button onClick={this.cadastrar}>Criar</button>
                             <p>{this.state.status}</p>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ export default class ListarCategorias extends Component {
     }
 
     listarCategorias = () => {
-        Axios.get('http://localhost:5000/api/Categorias')
+        Axios.get('http://192.168.4.224:5000/api/Categorias')
             .then(response => {
                 this.setState({ lista: response.data });
                 // console.log(this.state.lista);
@@ -39,9 +39,9 @@ export default class ListarCategorias extends Component {
         return (
             <section id="listaCategorias">
                 <h2>Categorias</h2>
-                <table>
+                <table className="table">
                     <thead>
-                        <tr>
+                        <tr className="center-children thead-tr">
                             <th>Id</th>
                             <th>Nome</th>
                             <th>Descrição</th>
@@ -51,7 +51,7 @@ export default class ListarCategorias extends Component {
                     <tbody>
                         {this.state.lista.map(categoria =>{
                             return(
-                                <tr>
+                                <tr className="center-children alternate-purple-background alternate-lateral-purple-borders">
                                     <td>{categoria.idCategoria}</td>
                                     <td>{categoria.nome}</td>
                                     <td>{categoria.descricao}</td>

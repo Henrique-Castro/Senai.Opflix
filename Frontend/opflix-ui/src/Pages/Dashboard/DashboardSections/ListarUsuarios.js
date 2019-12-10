@@ -16,8 +16,8 @@ export default class ListarUsuarios extends Component {
     }
 
     listarUsuarios = () => {
-        Axios.get('http://localhost:5000/api/Usuarios')
-            .then(response => { this.setState({ lista: response }) })
+        Axios.get('http://192.168.4.224:5000/api/Usuarios')
+            .then(response => { this.setState({ lista: response.data }) })
             .catch(erro => { console.log(erro) })
     }
 
@@ -25,9 +25,9 @@ export default class ListarUsuarios extends Component {
         return (
             <section id="listaUsuarios">
                 <h2>Usuários</h2>
-                <table>
+                <table className="table">
                     <thead>
-                        <tr>
+                        <tr className="center-children thead-tr">
                             <th>
                                 Id
                         </th>
@@ -40,12 +40,15 @@ export default class ListarUsuarios extends Component {
                             <th>
                                 Permissão
                         </th>
+                        <th>
+                            Ações
+                        </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {/* {this.state.lista.map(usuario => {
+                        {this.state.lista.map(usuario => {
                             return (
-                                <tr>
+                                <tr className="center-children alternate-purple-background alternate-lateral-purple-borders">
                                     <td>{usuario.idUsuario}</td>
                                     <td>{usuario.nome}</td>
                                     <td>{usuario.email}</td>
@@ -56,7 +59,7 @@ export default class ListarUsuarios extends Component {
                                     </div>
                                 </tr>
                             );
-                        })} */}
+                        })}
                     </tbody>
                 </table>
             </section>

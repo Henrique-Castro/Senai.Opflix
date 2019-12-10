@@ -28,13 +28,17 @@ export default class Dashboard extends Component {
                     <Usuarios />
                     <Sair />
                 </nav>
-                <BuscarLancamentos />
-                <BuscarCategorias />
+                <div className="buscar">
+                    <BuscarLancamentos />
+                    <BuscarCategorias />
+                </div>
                 <CadastrarLancamento />
                 <CadastrarCategoria />
-                <ListaUsuarios />
-                <ListaCategorias />
-                <ListaLancamentos />
+                <div className="listas">
+                    <ListaUsuarios />
+                    <ListaCategorias />
+                    <ListaLancamentos />
+                </div>
             </section>
         );
     }

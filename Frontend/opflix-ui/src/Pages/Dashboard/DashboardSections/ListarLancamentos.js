@@ -11,12 +11,12 @@ export default class ListarLancamentos extends Component {
     componentDidMount() {
 
         Axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('usuario-opflix'); // for all requests
-
+        // console.log(Axios.defaults.headers.common['Authorization']);
         this.listarLancamentos();
     }
 
     listarLancamentos = () => {
-        Axios.get('http://localhost:5000/api/Lancamentos/Todos')
+        Axios.get('http://192.168.4.224:5000/api/Lancamentos/Todos')
             .then(response => {
                 this.setState({ lista: response.data });
                 // console.log(this.state.lista);
@@ -30,9 +30,9 @@ export default class ListarLancamentos extends Component {
         return (
             <section id="listaLancamentos">
                 <h2>Lançamentos</h2>
-                <table>
+                <table className="table">
                     <thead>
-                        <tr>
+                        <tr className="center-children thead-tr">
                             <th>Id</th>
                             <th>Título</th>
                             <th>Sinopse</th>
@@ -49,7 +49,7 @@ export default class ListarLancamentos extends Component {
 
                         {this.state.lista.map(lancamento => {
                             return (
-                                <tr>
+                                <tr className="center-children alternate-purple-background alternate-lateral-purple-borders">
                                     <td>{lancamento.idLancamento}</td>
                                     <td>{lancamento.titulo}</td>
                                     <td>{lancamento.sinopse}</td>
