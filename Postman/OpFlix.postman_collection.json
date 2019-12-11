@@ -12,14 +12,7 @@
 					"name": "Cadastrar",
 					"request": {
 						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsImV4cCI6MTU2ODA2NjA0NCwiaXNzIjoiT3BGbGl4LldlYkFwaSIsImF1ZCI6Ik9wRmxpeC5XZWJBcGkifQ.puyLyvZoBcO_2XT-cYIh89KEanDBLg-XahTa0htAueI",
-									"type": "string"
-								}
-							]
+							"type": "noauth"
 						},
 						"method": "POST",
 						"header": [
@@ -32,12 +25,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"tipo\" : \"COMUM\",\n\t\"nome\" : \"Teste\",\n\t\"email\" : \"teste@gmail.com\",\n\t\"senha\" : \"123456\"\n}"
+							"raw": "{\n\t\"tipo\" : \"ADMINISTRADOR\",\n\t\"nome\" : \"Henrique\",\n\t\"email\" : \"hcdsfigueira@gmail.com\",\n\t\"senha\" : \"123456\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Usuarios",
+							"raw": "http://192.168.4.224:5000/api/Usuarios",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -65,15 +62,52 @@
 							"raw": "{\n\t\"email\" : \"hcdsfigueira@gmail.com\",\n\t\"senha\" : \"123456\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Usuarios/Login",
+							"raw": "http://192.168.4.224:5000/api/Usuarios/Login",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
 								"api",
 								"Usuarios",
 								"Login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiI0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsIlBlcm1pc3NhbyI6IkFETUlOSVNUUkFET1IiLCJleHAiOjE1NzE3NzU3MDgsImlzcyI6Ik9wRmxpeC5XZWJBcGkiLCJhdWQiOiJPcEZsaXguV2ViQXBpIn0.wliZN5rVQSBx4cjAUseGY_ACZAQEfc48HZUUba20V5s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.4.224:5000/api/Usuarios",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"224"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Usuarios"
 							]
 						}
 					},
@@ -118,9 +152,13 @@
 							"raw": "{\n\t\"nome\" : \"Científico\",\n\t\"descricao\" : \"Várias ciências mostradas nas telinhas e telonas de acordo com o método científico.\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Categorias",
+							"raw": "http://192.168.4.224:5000/api/Categorias",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -137,13 +175,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/Categorias",
+							"raw": "http://192.168.4.224:5000api/Categorias",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
-							"port": "5000",
+							"port": "5000api",
 							"path": [
-								"api",
 								"Categorias"
 							]
 						}
@@ -177,9 +218,13 @@
 							"raw": "{\n\t\"nome\" : \"Ficção C.\",\n\t\"descricao\" : \"TODO: Permitir campos nulos\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Categorias/1",
+							"raw": "http://192.168.4.224:5000/api/Categorias/1",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -199,7 +244,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsImV4cCI6MTU2ODA2NzY0MywiaXNzIjoiT3BGbGl4LldlYkFwaSIsImF1ZCI6Ik9wRmxpeC5XZWJBcGkifQ.D-4iJShCdWCVL9iCuSJ3QtHzPc7nB4b2GzBgkrer378",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiI0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsIlBlcm1pc3NhbyI6IkFETUlOSVNUUkFET1IiLCJleHAiOjE1NzE3NzI0MzEsImlzcyI6Ik9wRmxpeC5XZWJBcGkiLCJhdWQiOiJPcEZsaXguV2ViQXBpIn0.q3HXppoDhyQWnd5TXFlgq3hQq_EaHJ44l3dxQxMSPwc",
 									"type": "string"
 								}
 							]
@@ -207,15 +252,19 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/Categorias/1",
+							"raw": "http://192.168.4.224:5000/api/Categorias/4",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
 								"api",
 								"Categorias",
-								"1"
+								"4"
 							]
 						}
 					},
@@ -253,9 +302,13 @@
 							"raw": "{\n\t\"nome\" : \"Filme\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Formatos",
+							"raw": "http://192.168.4.224:5000/api/Formatos",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -272,9 +325,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/Formatos",
+							"raw": "http://192.168.4.224:5000/api/Formatos",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -312,9 +369,13 @@
 							"raw": "{\n\t\"nome\" : \"Série animada\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Formatos/1",
+							"raw": "http://192.168.4.224:5000/api/Formatos/1",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -358,9 +419,13 @@
 							"raw": "{\n\t\"nome\" : \"Canais fechados\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Plataformas",
+							"raw": "http://192.168.4.224:5000/api/Plataformas",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -394,9 +459,13 @@
 							}
 						],
 						"url": {
-							"raw": "localhost:5000/api/Plataformas",
+							"raw": "http://192.168.4.224:5000/api/Plataformas",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -434,9 +503,13 @@
 							"raw": "{\n\t\"nome\" : \"Amazon\"\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Plataformas/3",
+							"raw": "http://192.168.4.224:5000/api/Plataformas/3",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -461,7 +534,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlQGdtYWlsLmNvbSIsImp0aSI6IjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDT01VTSIsImV4cCI6MTU2ODA2NjA2OSwiaXNzIjoiT3BGbGl4LldlYkFwaSIsImF1ZCI6Ik9wRmxpeC5XZWJBcGkifQ.04mHJRZDDoPyd9ZVoa6zz75lGseTDp97eGM9dGvvxNw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiI0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsIlBlcm1pc3NhbyI6IkFETUlOSVNUUkFET1IiLCJleHAiOjE1NzM1ODQ0NTMsImlzcyI6Ik9wRmxpeC5XZWJBcGkiLCJhdWQiOiJPcEZsaXguV2ViQXBpIn0.bP24v_yshYYhgdKel7zg2107cpF4b9nmv9MRp1UsoHc",
 									"type": "string"
 								}
 							]
@@ -469,9 +542,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/Lancamentos/Visiveis",
+							"raw": "http://192.168.4.224:5000/api/Lancamentos/Visiveis",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -491,7 +568,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlQGdtYWlsLmNvbSIsImp0aSI6IjIiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJDT01VTSIsImV4cCI6MTU2ODA2NjA2OSwiaXNzIjoiT3BGbGl4LldlYkFwaSIsImF1ZCI6Ik9wRmxpeC5XZWJBcGkifQ.04mHJRZDDoPyd9ZVoa6zz75lGseTDp97eGM9dGvvxNw",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiI0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsIlBlcm1pc3NhbyI6IkFETUlOSVNUUkFET1IiLCJleHAiOjE1NzQ0NDk0NjIsImlzcyI6Ik9wRmxpeC5XZWJBcGkiLCJhdWQiOiJPcEZsaXguV2ViQXBpIn0.KPQ8mZ4GAzvvE6Tgw2S2VTsWErh-pdgkO-Cfyd_c9uQ",
 									"type": "string"
 								}
 							]
@@ -499,9 +576,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/Lancamentos/Todos",
+							"raw": "http://192.168.4.224:5000/api/Lancamentos/Todos",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -521,7 +602,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiIxIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsImV4cCI6MTU2ODA2MzE0OSwiaXNzIjoiT3BGbGl4LldlYkFwaSIsImF1ZCI6Ik9wRmxpeC5XZWJBcGkifQ.L7wyavzjWdCygu_Wtublu2Tvb9H_d0nzlzq0WPs0RoQ",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiI0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsIlBlcm1pc3NhbyI6IkFETUlOSVNUUkFET1IiLCJleHAiOjE1NzM1ODQ0NTMsImlzcyI6Ik9wRmxpeC5XZWJBcGkiLCJhdWQiOiJPcEZsaXguV2ViQXBpIn0.bP24v_yshYYhgdKel7zg2107cpF4b9nmv9MRp1UsoHc",
 									"type": "string"
 								}
 							]
@@ -537,12 +618,16 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"titulo\" : \"Cosmos\",\n\t\"sinopse\" : \"Science, Science!\",\n\t\"categoria\" : 2,\n\t\"duracao\" : \"557\",\n\t\"formato\" : 1,\n\t\"estreia\" : \"2014-03-09\",\n\t\"qtdEpisodios\" : 9,\n\t\"plataforma\" : 2,\n\t\"visivel\" : 1\n}"
+							"raw": "{\n    \"titulo\": \"IIII\",\n    \"sinopse\": \"Bsh\",\n    \"categoria\": 3,\n    \"duracao\": \"557\",\n    \"formato\": 1,\n    \"estreia\": \"2014-03-09\",\n    \"qtdEpisodios\": 9,\n    \"plataforma\": 2,\n    \"visivel\": 1\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Lancamentos",
+							"raw": "http://192.168.4.224:5000/api/Lancamentos",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -569,9 +654,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:5000/api/Lancamentos/1",
+							"raw": "http://192.168.4.224:5000/api/Lancamentos/1",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -610,9 +699,13 @@
 							"raw": "{\n\t\"titulo\" : \"Cosmos\",\n\t\"sinopse\" : \"Science, Science!\",\n\t\"categoria\" : 2,\n\t\"duracao\" : \"557\",\n\t\"formato\" : 1,\n\t\"estreia\" : \"2014-03-09\",\n\t\"qtdEpisodios\" : 9,\n\t\"plataforma\" : 2,\n\t\"visivel\" : 1\n}"
 						},
 						"url": {
-							"raw": "localhost:5000/api/Lancamentos/1",
+							"raw": "http://192.168.4.224:5000/api/Lancamentos/1",
+							"protocol": "http",
 							"host": [
-								"localhost"
+								"192",
+								"168",
+								"4",
+								"224"
 							],
 							"port": "5000",
 							"path": [
@@ -623,8 +716,177 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "OrdenarPorData",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiI0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsIlBlcm1pc3NhbyI6IkFETUlOSVNUUkFET1IiLCJleHAiOjE1NzM1ODgyMTEsImlzcyI6Ik9wRmxpeC5XZWJBcGkiLCJhdWQiOiJPcEZsaXguV2ViQXBpIn0.Hy31wfPxowpTcLCq6aG0A5tf-S3P-KozvLaP6S2THAc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.4.224:5000/api/Lancamentos/OrdenarPorData",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"224"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Lancamentos",
+								"OrdenarPorData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Favoritar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhjZHNmaWd1ZWlyYUBnbWFpbC5jb20iLCJqdGkiOiI0IiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQURNSU5JU1RSQURPUiIsIlBlcm1pc3NhbyI6IkFETUlOSVNUUkFET1IiLCJleHAiOjE1NzQ0NDk0NjIsImlzcyI6Ik9wRmxpeC5XZWJBcGkiLCJhdWQiOiJPcEZsaXguV2ViQXBpIn0.KPQ8mZ4GAzvvE6Tgw2S2VTsWErh-pdgkO-Cfyd_c9uQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://192.168.4.224:5000/api/Lancamentos/Favoritar/1",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"224"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Lancamentos",
+								"Favoritar",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarFavoritos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.4.224:5000/api/Lancamentos/ListarFavoritos/4",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"224"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Lancamentos",
+								"ListarFavoritos",
+								"4"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "Localizacao",
+			"item": [
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"latitude\": \"-23.6246038\",\n\t\"longitude\": \"-46.5619462\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://192.168.4.224:5000/api/Localizacoes",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"224"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Localizacoes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://192.168.4.224:5000/api/Localizacoes",
+							"protocol": "http",
+							"host": [
+								"192",
+								"168",
+								"4",
+								"224"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Localizacoes"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	]
 }

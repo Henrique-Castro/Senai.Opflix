@@ -18,6 +18,14 @@ import ListaCategorias from "./DashboardSections/ListarCategorias";
 import ListaLancamentos from "./DashboardSections/ListarLancamentos";
 
 export default class Dashboard extends Component {
+
+    constructor() {
+        super();
+    }
+    direcionar(localizacao) {
+        this.props.history.push('/' + localizacao);
+    }
+
     render() {
         return (
             <section id="dashboard">
@@ -26,6 +34,11 @@ export default class Dashboard extends Component {
                     <Categorias />
                     <Lancamentos />
                     <Usuarios />
+                    <div>
+                        <button className="dash-nav-button" onClick={() => this.direcionar('localizacao')}>
+                            Localização
+                        </button>
+                    </div>
                     <Sair />
                 </nav>
                 <div className="buscar">

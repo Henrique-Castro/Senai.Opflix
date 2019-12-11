@@ -7,6 +7,7 @@ import Login from './Pages/Login';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import Cadastrar from './Pages/Cadastrar';
 import Usuario from './Pages/UsuarioLogado';
+import Localizacao from './Pages/Localizacao';
 
 //routes
 import { Route, Link, BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
@@ -37,6 +38,7 @@ const routing = (
                 <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/cadastrar" component={Cadastrar} />
                 <RotaPrivada path="/usuario" component={Usuario}/>
+                <RotaPrivada path="/localizacao" component={Localizacao}/>
             </Switch>
         </div>
     </Router>
